@@ -18,17 +18,17 @@ import javax.swing.SwingUtilities;
 public class ScaryMaze extends JPanel implements Runnable, MouseMotionListener {
 	
 	BufferedImage maze;
-	final int frameWidth = 600;
-	final int frameHeight = 400;
+	final int frameWidth = 800;
+	final int frameHeight = 600;
 
 	ScaryMaze() throws Exception {
 		//1. Use this online tool to make a maze image and drop it into your day5 package: http://pixlr.com/editor/
-		maze = ImageIO.read(getClass().getResource("maze.png"));
+		maze = ImageIO.read(getClass().getResource("maze.jpg"));
 		//2. set the mouse pointer to the start of your maze using:
-		//new Robot().mouseMove(xPosition, yPosition)
+		new Robot().mouseMove(700, 96);
 		
 		//3. add a mouse motion listener using:
-		//addMouseMotionListener(this)
+		addMouseMotionListener(this);
 		
 	}
 
@@ -38,16 +38,23 @@ public class ScaryMaze extends JPanel implements Runnable, MouseMotionListener {
 		int mouseY = e.getY();
 		int mouseColor = maze.getRGB(mouseX, mouseY);
 		//4. print the mouseColor variable to see what color the mouse is touching
-
+		System.out.println(mouseX + " "+mouseY);
 		//5. make a variable to hold the background color. 
-
+int backColor = -1 ;
 		//6. if the mouse falls off the path (if it is on the background)
-		
+if(mouseColor ==backColor ){
+	scare();
+}
 				// call the scare method
 		
 		//10. if the mouse is on the end color
 				
 				// pop up a message to tell them they won
+		
+	}
+
+	private void Syso(int mouseX, int mouseY) {
+		// TODO Auto-generated method stub
 		
 	}
 
@@ -59,14 +66,14 @@ public class ScaryMaze extends JPanel implements Runnable, MouseMotionListener {
 		//8. play the scary sound. Hint: type "sound" and then a period.		
 		
 		//9. drop an image into your day5 package, and use the showScaryImage method to scare your victim!
-
+showScaryImage("maxresdefault.jpg");
 	}
 
 	private void showScaryImage(String imageName) {
 		try {
-			maze = ImageIO.read(getClass().getResource(imageName));
+			maze = ImageIO.read(getClass().getResource("maxresdefault.jpg"));
 		} catch (Exception e) {
-			System.err.println("Couldn't find this image: " + imageName);
+			System.err.println("Couldn't find this image: " + "maxresdefault.jpg");
 		}
 		repaint();
 	}
